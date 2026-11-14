@@ -10,5 +10,5 @@ pyarrow==17.0.0
 wheel==0.44.0
 seqeval==1.2.2
 huggingface-hub==0.24.6
-Pillow==9.3.0
+Pillow==13.0.0
 cryptography==42.0.0
