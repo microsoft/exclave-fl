@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
+# source ./set-env.sh
+
+# shared settings: azure/config.env (see azure/config.env.example)
+_d=$PWD; while [ "$_d" != / ] && [ ! -f "$_d/load-config.sh" ]; do _d=$(dirname "$_d"); done
+source "$_d/load-config.sh" || return 1; unset _d
+
+# resource group
+export AZURE_RESOURCE_GROUP="$RESOURCE_GROUP"
+# client name
+export CLIENT_NAME="$(basename $(dirname $PWD))"
+# name of vm that builds custom image
+export IMAGE_VM_NAME="${DNS_PREFIX}enclave-image-client"
+# disk name of image vm
+export IMAGE_VM_DISK_NAME="$IMAGE_VM_NAME-os-disk"
+# storage account that stores .vhd file
+export IMAGE_STORAGE_ACCOUNT_NAME="$STORAGE_ACCOUNT"
+# storage container that stores .vhd file
+export IMAGE_STORAGE_CONTAINER_NAME="enclave-image-client"
+# name of vm image gallery
+export AZURE_IMAGE_GALLERY="$GALLERY"
+# name of vm image definition
+export AZURE_IMAGE_DEFINITION="enclave-client"
+# version of vm image
+export AZURE_IMAGE_VERSION="$IMAGE_VERSION"
+# name of confidential vm that boots from custom image
+export CONFIDENTIAL_VM_NAME="${DNS_PREFIX}enclave-${CLIENT_NAME}"
+# name of confidential vm os disk
+export CONFIDENTIAL_VM_DISK_NAME="$CONFIDENTIAL_VM_NAME-os-disk"
+# dns tag
+export CONFIDENTIAL_VM_DNS_TAG="${DNS_PREFIX}enclave-fl-${CLIENT_NAME}"
+# name of data disk to be attached to cvm
+export DATA_DISK_NAME="verity-data-${CLIENT_NAME}"
+# name of storage account that stores attestation policy
+export ATTESTATION_POLICY_STORAGE_ACCOUNT_NAME="$STORAGE_ACCOUNT"
+# name of storage container that stores attestation policy
+export ATTESTATION_POLICY_STORAGE_CONTAINER_NAME="enclave-client"

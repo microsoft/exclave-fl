@@ -1,0 +1,63 @@
+{
+  "format_version": 2,
+  "min_clients": 1,
+  "num_rounds": 10,
+  "server": {
+    "heart_beat_timeout": 600
+  },
+  "task_data_filters": [],
+  "task_result_filters": [],
+  "components": [
+    {
+      "id": "persistor",
+      "name": "PTFileModelPersistor",
+      "args": {
+        "model": {
+          "path": "pt.networks.cv_models.VGG9",
+          "args": {}
+        }
+      }
+    },
+    {
+      "id": "shareable_generator",
+      "path": "confidential_fl.app_common.shareablegenerators.exclave_full_model_shareable_generator.ExclaveFullModelShareableGenerator",
+      "args": {
+        "model_update_connector_id": "model-update-connector"
+      }
+    },
+    {
+      "id": "model-update-connector",
+      "path": "confidential_fl.app_common.grpc.shadow_connectors.model_update_connector.ModelUpdateConnector",
+      "args": {
+        "fqdn" : "${DNS_PREFIX}model-update-exclave.westeurope.cloudapp.azure.com",
+        "port" : "50051"
+      }
+    },
+    {
+      "id": "aggregation-connector",
+      "path": "confidential_fl.app_common.grpc.shadow_connectors.aggregation_connector.AggregationConnector",
+      "args": {
+        "fqdn" : "${DNS_PREFIX}aggregation-exclave.westeurope.cloudapp.azure.com",
+        "port" : "50051"
+      }
+    }
+  ],
+  "workflows": [
+    {
+      "id": "scatter_and_gather",
+      "name": "ScatterAndGather",
+      "args": {
+        "min_clients": "{min_clients}",
+        "num_rounds": "{num_rounds}",
+        "start_round": 0,
+        "wait_time_after_min_received": 0,
+        "aggregator_id": "aggregation-connector",
+        "persistor_id": "persistor",
+        "shareable_generator_id": "shareable_generator",
+        "train_task_name": "remote",
+        "train_timeout": 0,
+	"snapshot_every_n_rounds": 0
+      }
+    }
+  ]
+}

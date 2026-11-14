@@ -1,0 +1,9 @@
+{
+  "name": "mobilebert_ncbi",
+  "resource_spec": {},
+  "deploy_map": {
+    "mobilebert_baselines": [
+      "@ALL"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+
+// grpc communication between server and aggregation exclave
+
+syntax = "proto3";
+
+package aggregation;
+
+
+service Aggregation {
+  // aggregation rpc
+  rpc Accept(LocalUpdate) returns (Accepted) {}
+  rpc Aggregate(Round) returns (GlobalModel) {}
+}
+
+// Input data and meta data
+message LocalUpdate {
+  // serialized numpy arrays of local model weights
+  map<string, bytes> local_model = 1;
+  // contributor name
+  string contributor_name = 2;
+  // contribution round
+  int64 contribution_round = 3;
+}
+
+message Accepted {
+  // if this contribution is accepted
+  bool accepted = 1;
+}
+
+message Round {
+  // current round
+  int64 aggregation_round = 1;
+}
+
+message GlobalModel {
+  map<string, bytes>  global_model = 1;
+}

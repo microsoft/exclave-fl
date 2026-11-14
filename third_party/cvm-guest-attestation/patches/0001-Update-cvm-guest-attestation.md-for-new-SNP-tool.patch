@@ -1,0 +1,30 @@
+From a94eff7727a3e752b42abc76d4bb88ba6a590239 Mon Sep 17 00:00:00 2001
+From: Jinnan <Jinnan-Guo@users.noreply.github.com>
+Date: Tue, 20 Feb 2024 22:33:22 +0000
+Subject: [PATCH 1/6] Update cvm-guest-attestation.md for new SNP tool
+
+---
+ cvm-guest-attestation.md | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cvm-guest-attestation.md b/cvm-guest-attestation.md
+index e00d14e..dcd2398 100644
+--- a/cvm-guest-attestation.md
++++ b/cvm-guest-attestation.md
+@@ -83,12 +83,12 @@ The mechanism to fetch the report is described below.
+ _Note_ : Once the VCEK cert and SNP report are available, the steps below can be done on any
+ other trusted CVM or non-CVM machine.
+ 
+-4. Install the AMD SEV-Tool utility following the instructions here: [GitHub – AMDESE/sev-tool: AMD SEV Tool](https://github.com/AMDESE/sev-tool), and contact AMD for support.
+-5. Use AMD SEV-Tool to parse the report (to obtain the information that SNP is enabled). Note:
+-    sevtool binary is in the <repo root>/src folder.
++4. Install the AMD SNP Guest utility following the instructions here: [GitHub – virtee/snpguest: A CLI tool for interacting with SEV-SNP guest environment](https://github.com/virtee/snpguest), and contact AMD for support.
++5. Use AMD SNP-Guest to parse the report (to obtain the information that SNP is enabled). Note:
++    sevguest binary is in the <repo root>/target/release folder.
+ 
+ ```
+-% sudo ./sevtool –-ofolder <location of vcek.pem & guest_report.bin> --validate_guest_report
++% sudo ./snpguest verify attestation <directory of vcek.pem & guest_report.bin> <directory of vcek.pem & guest_report.bin>/guest_report.bin
+ ```
+ If you see the below output, it means that the SNP report is valid, and that HCL has
+ cryptographically verified that it is running on a genuine AMD processor and that SNP is

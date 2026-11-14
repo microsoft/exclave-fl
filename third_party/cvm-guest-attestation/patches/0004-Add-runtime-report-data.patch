@@ -1,0 +1,46 @@
+From aadd7351938c2d6a370ae0f28bb66ce3f2279140 Mon Sep 17 00:00:00 2001
+From: Jinnan Guo <Jinnan-Guo@users.noreply.github.com>
+Date: Thu, 14 Mar 2024 17:31:47 +0000
+Subject: [PATCH 4/6] Add runtime report data
+
+---
+ cvm-attestation-sample-app/main.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/cvm-attestation-sample-app/main.cpp b/cvm-attestation-sample-app/main.cpp
+index 2d47034..2b13490 100644
+--- a/cvm-attestation-sample-app/main.cpp
++++ b/cvm-attestation-sample-app/main.cpp
+@@ -65,9 +65,10 @@ int main(int argc, char* argv[]) {
+     std::string attestation_url;
+     std::string nonce;
+     std::string output_type;
++    std::string report_data;
+ 
+     int opt;
+-    while ((opt = getopt(argc, argv, ":a:n:o:")) != -1) {
++    while ((opt = getopt(argc, argv, ":a:n:o:r:")) != -1) {
+         switch (opt) {
+         case 'a':
+             attestation_url.assign(optarg);
+@@ -78,6 +79,9 @@ int main(int argc, char* argv[]) {
+         case 'o':
+             output_type.assign(optarg);
+             break;
++	case 'r':
++	    report_data.assign(optarg);
++	    break;
+         case ':':
+             fprintf(stderr, "Option needs a value\n");
+             exit(1);
+@@ -111,8 +115,8 @@ int main(int argc, char* argv[]) {
+         // parameters for the Attest call       
+         attest::ClientParameters params = {};
+         params.attestation_endpoint_url = (unsigned char*)attestation_url.c_str();
+-        std::string client_payload_str = "{\"nonce\":\"" + nonce + "\"}"; // nonce is optional
+-        params.client_payload = (unsigned char*) client_payload_str.c_str();
++	std::string client_payload_str = "{\"nonce\":\"" + nonce + "\", \"report_data\":\"" + report_data + "\"}"; // nonce is optional, report_data is base64 encoded in the response jwt
++	params.client_payload = (unsigned char*) client_payload_str.c_str();
+         params.version = CLIENT_PARAMS_VERSION;
+         unsigned char* jwt = nullptr;
+         attest::AttestationResult result;

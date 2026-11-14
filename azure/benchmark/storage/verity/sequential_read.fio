@@ -1,0 +1,14 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
+[seq_read]
+ioengine=libaio
+rw=read
+filename=${FILENAME}
+numjobs=${NUMJOBS}
+group_reporting=1
+thread=1
+direct=1
+loops=1
+bs=${BLOCKSIZE}
+iodepth=32

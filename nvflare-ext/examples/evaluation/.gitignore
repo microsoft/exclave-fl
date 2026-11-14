@@ -1,0 +1,21 @@
+# ide
+.idea/
+.ipynb_checkpoints/
+
+# nvflare artifacts
+*.rendered.yml
+/job/
+log.txt
+client_token.txt
+*.fl
+audit.log
+transfer
+workspace
+
+# python
+__pycache__
+.pyc
+
+# virtual environments
+nvflare_cifar10
+

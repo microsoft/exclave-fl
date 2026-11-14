@@ -1,0 +1,22 @@
+From 0d12c816d47ea66b633805f169cb45a917145827 Mon Sep 17 00:00:00 2001
+From: Jinnan Guo <Jinnan-Guo@users.noreply.github.com>
+Date: Sat, 16 Mar 2024 15:18:39 +0000
+Subject: [PATCH 5/6] Update usage info
+
+---
+ cvm-attestation-sample-app/main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cvm-attestation-sample-app/main.cpp b/cvm-attestation-sample-app/main.cpp
+index 2b13490..a7bf60f 100644
+--- a/cvm-attestation-sample-app/main.cpp
++++ b/cvm-attestation-sample-app/main.cpp
+@@ -58,7 +58,7 @@ static int getopt(int argc, char* const argv[], const char* optstring)
+ #endif //!PLATFORM_UNIX
+ 
+ void usage(char* programName) {
+-    printf("Usage: %s -a <attestation-endpoint> -n <nonce> -o <%s|%s>\n", programName, OUTPUT_TYPE_BOOL, OUTPUT_TYPE_JWT);
++    printf("Usage: %s -a <attestation-endpoint> -r <runtime-data> -n <nonce> -o <%s|%s>\n", programName, OUTPUT_TYPE_BOOL, OUTPUT_TYPE_JWT);
+ }
+ 
+ int main(int argc, char* argv[]) {

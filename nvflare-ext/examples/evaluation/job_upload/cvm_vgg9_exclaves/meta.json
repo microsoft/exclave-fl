@@ -1,0 +1,9 @@
+{
+  "name": "app",
+  "resource_spec": {},
+  "deploy_map": {
+    "cvm_vgg9_exclaves": [
+      "@ALL"
+    ]
+  }
+}

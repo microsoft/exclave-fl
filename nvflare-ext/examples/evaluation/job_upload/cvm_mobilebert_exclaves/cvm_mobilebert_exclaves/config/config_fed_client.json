@@ -1,0 +1,46 @@
+{
+  "format_version": 2,
+
+  "executors": [
+    {
+      "tasks": [
+        "remote"
+      ],
+      "executor": {
+        "id": "ShadowExecutor",
+        "path": "confidential_fl.app_common.executors.shadow_executor.ShadowExecutor",
+        "args": {
+          "shadow_connector_id": "training-connector"
+        }
+      }
+    }
+  ],
+
+  "task_result_filters": [
+    {
+        "tasks": ["remote"],
+        "filters":[
+            {
+              "path": "confidential_fl.app_common.grpc.shadow_connectors.svt_dp_connector.SvtDpConnector",
+              "args": {
+                  "fqdn": "${DNS_PREFIX}svt-dp-exclave.westeurope.cloudapp.azure.com",
+                  "port": "50051"
+              }
+            }
+        ]
+  }
+  ],
+  "task_data_filters": [
+  ],
+
+  "components": [
+    {
+      "id": "training-connector",
+      "path": "confidential_fl.app_common.grpc.shadow_connectors.training_connector.TrainingConnector",
+      "args": {
+        "fqdn" : "${DNS_PREFIX}mobilebert-train-exclave.westeurope.cloudapp.azure.com",
+        "port" : "50051"
+      }
+    }
+  ]
+}

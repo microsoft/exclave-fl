@@ -1,0 +1,9 @@
+{
+  "name": "bert_baselines",
+  "resource_spec": {},
+  "deploy_map": {
+    "bert_baselines": [
+      "@ALL"
+    ]
+  }
+}
