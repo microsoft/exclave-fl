@@ -1,0 +1,13 @@
+numpy==1.26.4
+grpcio==1.46.3
+grpcio-tools==1.46.3
+transformers==4.44.0
+safetensors==0.4.5
+datasets==2.21.0
+pyarrow==17.0.0
+wheel==0.44.0
+huggingface-hub==0.24.6
+Pillow==9.3.0
+pandas==2.2.2
+tpm2-pytss==2.3.0
+cryptography==42.0.0

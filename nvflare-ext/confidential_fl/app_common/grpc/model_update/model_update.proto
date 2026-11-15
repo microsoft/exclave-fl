@@ -1,0 +1,24 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+
+// grpc communication between server and model update exclave
+
+syntax = "proto3";
+
+package modelupdate;
+
+
+service ModelUpdate{
+  rpc ModelUpdate(InputModels) returns (FullModel) {}
+}
+
+// base model and updated weight difference delta
+message InputModels {
+  map<string, bytes> base_model = 1;
+  map<string, bytes> model_diff = 2;
+}
+
+// full model
+message FullModel {
+  map<string, bytes> full_model = 1;
+}

@@ -1,0 +1,29 @@
+# your deployment settings (copy config.env.example)
+config.env
+
+# built by third_party/cvm-guest-attestation/build.sh
+confidential-vm/proxy/*/*/docker/AttestationClient
+
+# generated workspace directory 
+workspace-*
+__pycache__
+
+# figures
+*.png
+*.eps
+*.pdf
+
+# written by the MAA scripts; private_key.pem is a secret
+confidential-vm/proxy/maa/private_key.pem
+confidential-vm/proxy/maa/cert.pem
+confidential-vm/proxy/maa/cert.raw
+confidential-vm/proxy/maa/policy.jws
+
+# AK public key of the VM, written by benchmark/auditing/run_benchmark.py
+benchmark/auditing/akpub.pem
+
+# written by the image build and measure scripts
+*.vhd
+*_measurements.json
+attestation_policy.json
+azcvmcli.log

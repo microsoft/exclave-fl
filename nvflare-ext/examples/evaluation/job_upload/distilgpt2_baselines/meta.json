@@ -1,0 +1,9 @@
+{
+  "name": "distilgpt2_baselines",
+  "resource_spec": {},
+  "deploy_map": {
+    "distilgpt2_baselines": [
+      "@ALL"
+    ]
+  }
+}

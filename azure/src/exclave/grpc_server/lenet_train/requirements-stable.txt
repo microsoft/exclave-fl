@@ -1,0 +1,8 @@
+numpy==1.26.4
+grpcio==1.46.3
+grpcio-tools==1.46.3
+scikit-learn==1.5.1
+pandas==2.2.2
+Pillow==9.3.0
+tpm2-pytss==2.3.0
+cryptography==42.0.0

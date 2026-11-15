@@ -1,0 +1,9 @@
+[submodule "third_party/NVFlare"]
+	path = third_party/NVFlare
+	url = https://github.com/NVIDIA/NVFlare.git
+[submodule "third_party/cvm-guest-attestation/upstream"]
+	path = third_party/cvm-guest-attestation/upstream
+	url = https://github.com/Azure/confidential-computing-cvm-guest-attestation.git
+[submodule "third_party/conf-gpu"]
+	path = third_party/conf-gpu
+	url = https://github.com/Azure/az-cgpu-onboarding.git

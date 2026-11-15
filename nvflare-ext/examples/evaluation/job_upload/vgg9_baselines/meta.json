@@ -1,0 +1,12 @@
+{
+  "name": "vgg9_baselines",
+  "deploy_map": {
+    "vgg9_baselines": [
+      "@ALL"
+    ]
+  },
+  "min_clients": 1,
+  "mandatory_clients": [
+    "site-1"
+  ]
+}

@@ -1,0 +1,26 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+
+// grpc communication between client and dp exclave
+
+syntax = "proto3";
+
+package dp;
+
+
+service DifferentialPrivacy{
+  // dp rpc
+  rpc AddNoise(LocalModel) returns (NoisyModel) {}
+}
+
+// Input data and meta data
+message LocalModel {
+  // serialized numpy arrays of local model weights
+  map<string, bytes> local_model = 1;
+  int64 epoch_len = 2;
+}
+
+message NoisyModel {
+  // serialized numpy arrays of noisy model weights
+  map<string, bytes> noisy_model = 1;
+}

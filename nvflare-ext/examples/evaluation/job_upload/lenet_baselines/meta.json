@@ -1,0 +1,12 @@
+{
+  "name": "lenet_baselines",
+  "deploy_map": {
+    "lenet_baselines": [
+      "@ALL"
+    ]
+  },
+  "min_clients": 1,
+  "mandatory_clients": [
+    "site-1"
+  ]
+}

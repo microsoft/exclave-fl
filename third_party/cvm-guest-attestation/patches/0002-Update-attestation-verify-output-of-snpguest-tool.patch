@@ -1,0 +1,27 @@
+From 2bc052478e19a682aa4af91e3d5e7dd788741ff5 Mon Sep 17 00:00:00 2001
+From: Jinnan <Jinnan-Guo@users.noreply.github.com>
+Date: Tue, 20 Feb 2024 22:39:35 +0000
+Subject: [PATCH 2/6] Update attestation verify output of snpguest tool
+
+---
+ cvm-guest-attestation.md | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/cvm-guest-attestation.md b/cvm-guest-attestation.md
+index dcd2398..7a7ffbf 100644
+--- a/cvm-guest-attestation.md
++++ b/cvm-guest-attestation.md
+@@ -95,7 +95,12 @@ cryptographically verified that it is running on a genuine AMD processor and tha
+ enabled for confidentiality on this processor.
+ 
+ ```
+-Guest report validated successfully! 
++Reported TCB Boot Loader from certificate matches the attestation report.
++Reported TCB TEE from certificate matches the attestation report.
++Reported TCB SNP from certificate matches the attestation report.
++Reported TCB Microcode from certificate matches the attestation report.
++Chip ID from certificate matches the attestation report.
++VCEK signed the Attestation Report!
+ ```
+     
+ It is important to note that the SNP report only certifies/measures the HCL (Microsoft firmware) and UEFI binary. You will not be able to generate arbitrary SNP reports by directly calling hardware APIs.

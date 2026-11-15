@@ -1,0 +1,9 @@
+{
+  "name": "app",
+  "resource_spec": {},
+  "deploy_map": {
+    "cvm_distilgpt2_exclaves": [
+      "@ALL"
+    ]
+  }
+}

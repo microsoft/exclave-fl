@@ -1,0 +1,26 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "confidential-fl"
+version = "0.1.0"
+description = "Exclave-based confidential federated learning components for NVIDIA FLARE"
+readme = "README.md"
+requires-python = ">=3.10"
+# nvflare comes from the pinned submodule, not PyPI: pip install ../third_party/NVFlare first
+# torch is also required at runtime (training connector, pt learners); the CVM images install it.
+dependencies = [
+    "grpcio",
+    "protobuf",
+    "numpy",
+]
+
+[tool.setuptools.packages.find]
+include = ["confidential_fl*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yml", "*.proto", "*.md"]

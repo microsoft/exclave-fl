@@ -1,0 +1,50 @@
+{
+  "format_version": 2,
+
+  "executors": [
+    {
+      "tasks": [
+        "train", "submit_model", "validate"
+      ],
+      "executor": {
+        "id": "Executor",
+        "path": "nvflare.app_common.executors.learner_executor.LearnerExecutor",
+        "args": {
+          "learner_id": "cifar10-learner"
+        }
+      }
+    }
+  ],
+  "task_result_filters": [
+    {
+      "tasks": ["train"],
+      "filters":[
+          {
+          "path": "confidential_fl.app_common.filters.fixed_svt_privacy.FixedSVTPrivacy",
+          "args": {
+            "fraction": 1,
+            "epsilon": 0.1,
+            "noise_var": 1e+3,
+            "gamma": 1e-4,
+	          "tau": 1e-8
+          }
+        }
+      ]
+    }
+  ],
+  "task_data_filters": [
+  ],
+
+  "components": [
+    {
+      "id": "cifar10-learner",
+      "path": "pt.learners.cifar10_learner.CIFAR10Learner",
+      "args": {
+	"model_name": "vgg9",
+        "aggregation_epochs": 6,
+        "lr": 1e-2,
+        "batch_size": 64
+      }
+    }
+  ]
+}

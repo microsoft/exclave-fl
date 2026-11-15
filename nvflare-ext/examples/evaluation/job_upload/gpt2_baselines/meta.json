@@ -1,0 +1,9 @@
+{
+  "name": "gpt2_baselines",
+  "resource_spec": {},
+  "deploy_map": {
+    "gpt2_baselines": [
+      "@ALL"
+    ]
+  }
+}

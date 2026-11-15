@@ -1,0 +1,39 @@
+NOTICE
+
+exclave-fl
+Copyright (c) Microsoft Corporation.
+
+This repository incorporates material as listed below or described in the code. The license texts
+are in LICENSE (MIT) and LICENSES/Apache-2.0.txt.
+
+NVIDIA FLARE (https://github.com/NVIDIA/NVFlare)
+Copyright (c) 2021-2023, NVIDIA CORPORATION. All rights reserved.
+License: Apache-2.0
+Also included as the submodule third_party/NVFlare.
+
+Hugging Face transformers (https://github.com/huggingface/transformers)
+Copyright 2021 The HuggingFace Inc. team. All rights reserved.
+License: Apache-2.0
+
+pytorch-cifar (https://github.com/kuangliu/pytorch-cifar)
+Copyright (c) 2017 liukuang
+License: MIT
+
+IBM FedMA (https://github.com/IBM/FedMA, no longer online)
+Copyright (c) 2020 International Business Machines
+License: MIT
+
+Azure confidential-computing-cvm-guest-attestation
+(https://github.com/Azure/confidential-computing-cvm-guest-attestation)
+Copyright (c) Microsoft Corporation.
+License: MIT
+Included as the submodule third_party/cvm-guest-attestation/upstream.
+
+Azure az-cgpu-onboarding (https://github.com/Azure/az-cgpu-onboarding)
+Copyright (c) 2024 Microsoft Corporation
+License: MIT
+Included as the submodule third_party/conf-gpu.
+
+microsoft/confidential-ai (https://github.com/microsoft/confidential-ai)
+Copyright (c) Microsoft Corporation.
+License: MIT

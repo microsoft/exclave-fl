@@ -1,0 +1,44 @@
+From 85e82affb2b4695281452afa87c278e6e0c5119a Mon Sep 17 00:00:00 2001
+From: Jinnan Guo <Jinnan-Guo@users.noreply.github.com>
+Date: Sun, 17 Mar 2024 19:14:49 +0000
+Subject: [PATCH 6/6] Add host data
+
+---
+ cvm-attestation-sample-app/main.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/cvm-attestation-sample-app/main.cpp b/cvm-attestation-sample-app/main.cpp
+index a7bf60f..9ea6866 100644
+--- a/cvm-attestation-sample-app/main.cpp
++++ b/cvm-attestation-sample-app/main.cpp
+@@ -66,9 +66,10 @@ int main(int argc, char* argv[]) {
+     std::string nonce;
+     std::string output_type;
+     std::string report_data;
++    std::string host_data;
+ 
+     int opt;
+-    while ((opt = getopt(argc, argv, ":a:n:o:r:")) != -1) {
++    while ((opt = getopt(argc, argv, ":a:n:o:r:h:")) != -1) {
+         switch (opt) {
+         case 'a':
+             attestation_url.assign(optarg);
+@@ -82,6 +83,9 @@ int main(int argc, char* argv[]) {
+ 	case 'r':
+ 	    report_data.assign(optarg);
+ 	    break;
++	case 'h':
++	    host_data.assign(optarg);
++	    break;
+         case ':':
+             fprintf(stderr, "Option needs a value\n");
+             exit(1);
+@@ -115,7 +119,7 @@ int main(int argc, char* argv[]) {
+         // parameters for the Attest call       
+         attest::ClientParameters params = {};
+         params.attestation_endpoint_url = (unsigned char*)attestation_url.c_str();
+-	std::string client_payload_str = "{\"nonce\":\"" + nonce + "\", \"report_data\":\"" + report_data + "\"}"; // nonce is optional, report_data is base64 encoded in the response jwt
++	std::string client_payload_str = "{\"nonce\":\"" + nonce + "\", \"report_data\":\"" + report_data + "\", \"host_data\":\"" + host_data + "\"}"; // nonce is optional, report_data is base64 encoded in the response jwt
+ 	params.client_payload = (unsigned char*) client_payload_str.c_str();
+         params.version = CLIENT_PARAMS_VERSION;
+         unsigned char* jwt = nullptr;

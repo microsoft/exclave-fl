@@ -1,0 +1,9 @@
+{
+  "name": "bert_ncbi",
+  "resource_spec": {},
+  "deploy_map": {
+    "cvm_mobilebert_exclaves": [
+      "@ALL"
+    ]
+  }
+}

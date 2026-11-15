@@ -1,0 +1,54 @@
+{
+  "format_version": 2,
+
+  "executors": [
+    {
+      "tasks": [
+        "train",
+        "validate"
+      ],
+      "executor": {
+        "id": "Executor",
+        "name": "LearnerExecutor",
+        "args": {
+          "learner_id": "nlp-learner"
+        }
+      }
+    }
+  ],
+
+  "task_result_filters": [
+    {
+      "tasks": ["train"],
+      "filters":[
+          {
+          "path": "confidential_fl.app_common.filters.fixed_svt_privacy.FixedSVTPrivacy",
+          "args": {
+            "fraction": 1,
+            "epsilon": 0.1,
+            "noise_var": 1e+3,
+            "gamma": 1e-4,
+            "tau": 1e-8
+          }
+        }
+      ]
+    } 
+  ],
+  "task_data_filters": [
+  ],
+
+  "components": [
+    {
+      "id": "nlp-learner",
+      "path": "pt.learners.ncbi_learner.NCBILearner",
+      "args": {
+        "model_name": "bert-base-uncased",
+        "learning_rate": 1e-5,
+        "batch_size": 16,
+        "num_labels": 3,
+        "aggregation_epochs": 4,
+        "ignore_token": -100
+      }
+    }
+  ]
+}

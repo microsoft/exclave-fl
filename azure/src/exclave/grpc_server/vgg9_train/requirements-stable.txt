@@ -1,0 +1,6 @@
+numpy==1.26.4
+grpcio==1.46.3
+grpcio-tools==1.46.3
+pillow==9.3.0
+tpm2-pytss==2.3.0
+cryptography==42.0.0
